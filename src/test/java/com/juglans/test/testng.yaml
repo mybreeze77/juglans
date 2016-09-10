@@ -1,0 +1,11 @@
+name: test suite
+parallel: methods
+verbose: 1
+threadCount: 10 
+parameters: { browserName: chrome }
+listeners:
+  - com.juglans.capability.SeleniumHandler
+tests:
+  - name: test
+    classes: 
+      - com.juglans.test.Example

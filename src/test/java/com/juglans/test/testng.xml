@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test suite" parallel="methods" verbose="1" thread-count="10" data-provider-thread-count="10">
+
+	<listeners>
+		<listener class-name="com.juglans.capability.SeleniumHandler"></listener>
+	</listeners>
+
+	<parameter name="browserName" value="chrome" />
+	<!-- <parameter name="gridHubUrl" value="http://remote.grid.hub.url:4444/wd/hub"></parameter>-->
+
+	<test name="test" >
+	    <classes>
+	       <class name="com.juglans.test.Example" />
+	    </classes>
+	</test>
+	
+
+</suite>
