@@ -1,5 +1,8 @@
 package com.juglans.driver;
 
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.android.AndroidDriver;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -13,6 +16,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
+import com.juglans.capability.AndroidCapabilityFactory;
 import com.juglans.capability.ChromeCapabilityFactory;
 import com.juglans.capability.FirefoxCapabilityFactory;
 import com.juglans.capability.IECapabilityFactory;
@@ -42,13 +46,21 @@ public class DriverLauncher {
 	public static String getBrowserName() {
 		return (String) get("browserName");
 	}
+	
+	public static String getPlatformName() {
+		return (String) get("platformName");
+	}
 
-	public static void start(String browserName) {
+	public static void start(String browserName, String platformName) {
 		put("browserName", browserName);
+		put("platformName", platformName);
 		DesiredCapabilities cap = null;
 		WebDriver driver = null;
 		try {
-			if(browserName.equalsIgnoreCase("chrome")) {
+			if(platformName != null && platformName.equalsIgnoreCase("android")) {
+				cap = new AndroidCapabilityFactory().generateCapability();
+				driver = getRemoteGridUrl() != null ? new AndroidDriver<MobileElement>(new URL(getRemoteGridUrl()), cap) : null;
+			} else if(browserName.equalsIgnoreCase("chrome")) {
 				cap = new ChromeCapabilityFactory().generateCapability();
 				driver = getRemoteGridUrl() != null ? new RemoteWebDriver(new URL(getRemoteGridUrl()), cap) : new ChromeDriver(cap);
 			} else if(browserName.equalsIgnoreCase("firefox")) {
@@ -70,7 +82,7 @@ public class DriverLauncher {
 		webdriver().quit();
 	}
 
-	private static Map<String, Object> getCurrentSession() {
+	public static Map<String, Object> getCurrentSession() {
 		Map<String, Object> currentSession = sessions.get();
 		if (currentSession == null) {
 			currentSession = new HashMap<String, Object>();
@@ -79,7 +91,7 @@ public class DriverLauncher {
 		return currentSession;
 	}
 
-	private static Object get(String key) {
+	public static Object get(String key) {
 		return getCurrentSession().get(key);
 	}
 

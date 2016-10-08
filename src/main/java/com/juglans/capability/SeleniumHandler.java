@@ -17,7 +17,8 @@ public class SeleniumHandler implements IInvokedMethodListener2 {
   public void beforeInvocation(IInvokedMethod method, ITestResult testResult, ITestContext context) {
       DriverLauncher.setContext(getParams(context));
       String browserName = (String) context.getCurrentXmlTest().getParameter("browserName");
-      DriverLauncher.start(browserName);
+      String platformName = (String) context.getCurrentXmlTest().getParameter("platformName");
+      DriverLauncher.start(browserName, platformName);
   }
 
   public void afterInvocation(IInvokedMethod method, ITestResult testResult, ITestContext context) {

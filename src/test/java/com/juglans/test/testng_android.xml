@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="test suite" parallel="methods" verbose="1" thread-count="10" data-provider-thread-count="10">
+
+	<listeners>
+		<listener class-name="com.juglans.capability.SeleniumHandler"></listener>
+	</listeners>
+
+	<!-- <parameter name="browserName" value="chrome" /> -->
+	<parameter name="appPackage" value="com.android.calculator2" />
+	<parameter name="appActivity" value=".Calculator" />
+	<parameter name="deviceName" value="Android_Emulator" />
+	<parameter name="platformName" value="Android" />
+	<parameter name="platformVersion" value="4.4" />
+	<parameter name="gridHubUrl" value="http://127.0.0.1:4723/wd/hub"></parameter>
+
+	<test name="test" >
+	    <classes>
+	       <class name="com.juglans.test.AndroidExample" />
+	    </classes>
+	</test>
+	
+
+</suite>
