@@ -17,9 +17,10 @@ public class AndroidCapabilityFactory implements ICapabilityFactory {
 	public DesiredCapabilities generateCapability() throws IOException {
 		DesiredCapabilities cap = DesiredCapabilities.android();
 		cap.setCapability("platformName", "Android");
-//		cap.setBrowserName(ContextUtil.getBrowserName());
+		cap.setBrowserName(ContextUtil.getBrowserName());
 		cap.setCapability("deviceName", ContextUtil.getDeviceName());
 		cap.setCapability("platformVersion", ContextUtil.getPlatformVersion());
+		cap.setCapability("app", ContextUtil.getApp());
 		cap.setCapability("appPackage", ContextUtil.getAppPackage());
 		cap.setCapability("appActivity", ContextUtil.getAppActivity());
 		return cap;

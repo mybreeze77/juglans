@@ -13,7 +13,7 @@ Support Matrix:
 - Java 8
 - Selenium 3.0.0-beta3
 - TestNG 6.9.10
-- Chrome/Firefox/IE Driver
+- Chrome/Firefox/IE Driver/Android
 
 ## How to write Page Object
 
@@ -121,6 +121,11 @@ A sample test plan can be like below. Again, try to write more by yourselves.
 			assertion.assertEquals(name, page.title.getText());
 		}
 	}
+
+## Mobile Testing
+Currently, Android (Native App and Web) is supported in this project. Before starting mobile testing, you need to prepare environment with [Appium](http://appium.io/), and corresponding Android SDK or real device.
+
+Feel free to run *com.juglans.test.AndroidExample* to experience it.
 
 
 ## Development

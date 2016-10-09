@@ -4,6 +4,11 @@ import java.util.Map;
 
 import com.juglans.driver.DriverLauncher;
 
+/**
+ * Context utility to manage parameters from TestNG
+ * @author Junlong Wu
+ *
+ */
 public class ContextUtil {
 
 	private ContextUtil(){};
@@ -30,6 +35,10 @@ public class ContextUtil {
 	
 	public static String getAppPackage() {
 		return (String)DriverLauncher.get("appPackage");
+	}
+	
+	public static String getApp() {
+		return (String)DriverLauncher.get("app");
 	}
 	
 	public static String getAppActivity() {
