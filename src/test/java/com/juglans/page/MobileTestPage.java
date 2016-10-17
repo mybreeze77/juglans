@@ -24,4 +24,7 @@ public class MobileTestPage extends BasePage<MobileTestPage> {
 	@FindBy(name = "plus") 
 	public WebElement plus;
 	
+	@FindBy(id = "com.android.calculator2:id/eq")
+	public WebElement equals;
+	
 }

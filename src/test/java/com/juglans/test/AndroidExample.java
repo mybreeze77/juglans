@@ -14,6 +14,7 @@ public class AndroidExample {
 		page.btn1.click();
 		page.plus.click();
 		page.btn3.click();
+		page.equals.click();
 	}
 	
 }
